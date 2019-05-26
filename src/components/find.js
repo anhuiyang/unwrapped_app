@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MapContainer from './map'
-import SearchBar from './searchbar'
+// import SearchBar from './searchbar'
 
 class Find extends Component{
         constructor(props) {
@@ -8,71 +8,58 @@ class Find extends Component{
           this.state = {
             shops: []
           }
-          }
-      
-        geolocateMe = () => {
-            if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(this.getLatandLong);
-            } else {
-              console.log("Geolocation is not supported by this browser.");
-            }
-          }
+        }
 
-      
-        getLatandLong = (position) => {
-            var coordinatesObject = {lat : position.coords.latitude.toFixed(2),  long : position.coords.longitude.toFixed(2)}
-            let location =  {location : coordinatesObject};
-            const body  = JSON.stringify(location)
-            fetch('https://enigmatic-badlands-83570.herokuapp.com/api/v1/shops', {
-              method: 'POST',
-              headers:{
-                'Content-Type': 'application/json'
-              },
-              body: body
-            })
-            .then((response) => {
-              return response.json()
-            })
-            .then((response) => {
-              this.setState({
-                shops: response,
-                currentLocation:  coordinatesObject
-              })
-            })
-          }
+        // geolocateMe = () => {
+        //     if (navigator.geolocation) {
+        //       navigator.geolocation.getCurrentPosition(this.getLatandLong);
+        //     } else {
+        //       console.log("Geolocation is not supported by this browser.");
+        //     }
+        //   }
+
+        // getLatandLong = (position) => {
+        //     var coordinatesObject = {lat : position.coords.latitude.toFixed(2),  long : position.coords.longitude.toFixed(2)}
+        //     let location =  {location : coordinatesObject};
+        //     const body  = JSON.stringify(location)
+        //     fetch('https://enigmatic-badlands-83570.herokuapp.com/api/v1/shops', {
+        //       method: 'POST',
+        //       headers:{
+        //         'Content-Type': 'application/json'
+        //       },
+        //       body: body
+        //     })
+        //     .then((response) => {
+        //       return response.json()
+        //     })
+        //     .then((response) => {
+        //       this.setState({
+        //         shops: response,
+        //         currentLocation:  coordinatesObject
+        //       })
+        //     })
+          // }
       
         componentDidMount() {
-          this.geolocateMe();
-          console.log('heyy')
+          // this.geolocateMe();
           fetch("http://localhost:1234/api/shops")
           .then(res=>res.json())
           .then(
             (result)=>{
-              console.log(result)
               this.setState({shops: result})
             }, 
             (error)=>{
-              console.log(error)
             }
           )
         }
     render(){
-        console.log(this.state.shops)
         return (
         <div>
             <h1> Find</h1>
             { this.state.shops.length > 0  &&
-            // <div>
-            //   <ul>
-            //     <li>{this.state.shops[0].name}<br/>
-            //     {this.state.shops[0].address}</li>
-            //     <li>{this.state.shops[1].name}<br/>
-            //     {this.state.shops[1].address}</li>
-            //   </ul>
-            // </div>
                 <MapContainer
                 markers={this.state} 
-                currentLocation={this.state.currentLocation}
+                // currentLocation={this.state.currentLocation}
                 />
             }
         </div>
