@@ -2,16 +2,16 @@
   margin: 0;
   box-sizing: border-box;
 }
-
 .Container {
   background-color: white;
-  height: 100vh;
+  height: 150vh;
   margin: 0 auto;
-  width: 50%;
   background-color: #edf6f3;
   padding: 15px;
 }
-
+.h1{
+  text-align: left
+}
 .Container-header {
   display: flex;
   justify-content: center;
