@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is connected to the API [here](https://github.com/anhuiyang/unwrapped_api)
 
 ## Available Scripts
 
