@@ -1,4 +1,4 @@
-This is connected to the API [here](https://github.com/anhuiyang/unwrapped_api)
+This is connected to an API [here](https://github.com/anhuiyang/unwrapped_api)
 
 ## Available Scripts
 
